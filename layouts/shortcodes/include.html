@@ -1,0 +1,6 @@
+Within the include shortcode, params from invoking page are: {{ .Page.Params }}
+
+The include shortcode was invoked with params: {{ .Params }}
+
+{{ $p := site.GetPage (.Get 0) }}
+{{ $p.RenderShortcodes }}
