@@ -2,5 +2,12 @@ Within the include shortcode, params from invoking page are: {{ .Page.Params }}
 
 The include shortcode was invoked with params: {{ .Params }}
 
-{{ $p := site.GetPage (.Get 0) }}
-{{ $p.RenderShortcodes }}
+{{- with $page := .Get 0 }}
+{{- with site.GetPage $page }}
+    {{- .RawContent | $.Page.RenderString }}
+  {{- else }}
+    {{- errorf "The %q shortcode was unable to get page %s: see %s" $.Name $page $.Position  }}
+  {{- end }}
+{{- else }}
+  {{- errorf "The %q shortcode requires a positional parameter, the logical path to the child page: see %s" .Name  .Position  }}
+{{- end -}}

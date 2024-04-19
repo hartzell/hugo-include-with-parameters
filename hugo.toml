@@ -1,4 +1,1 @@
 disableKinds = ["home", "taxonomy", "term"]
-# If you ignore p2.md, then it also doesn't get included into p1.
-# Hmmmm.
-# ignoreFiles = ['^.*/p2\.md$']
